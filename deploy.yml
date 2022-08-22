@@ -1,6 +1,5 @@
 ---
 - hosts: webservers
-  become: true
   tasks:
   - name: Stop Tomcat
     service: name=tomcat state=stopped
