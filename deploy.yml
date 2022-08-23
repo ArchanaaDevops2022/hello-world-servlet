@@ -1,8 +1,8 @@
 ---
 - hosts: webservers
-  become: true
   tasks:
   - name: Stop Tomcat
+    become: true
     service: name=tomcat state=stopped
   - name: Check that war file exist
     stat:
@@ -28,4 +28,5 @@
        url: http://35.183.182.187:8081/nexus/service/local/artifact/maven/redirect?r=releases&g=com.geekcap.vmturbo&a=hello-world-servlet-example&p=war&v=LATEST
        dest: /usr/share/tomcat/webapps/hello-world-servlet-example.war
   - name: Start Tomcat
+    become: true
     service: name=tomcat state=started
