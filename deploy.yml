@@ -1,8 +1,8 @@
 ---
 - hosts: webservers
+  become: true
   tasks:
   - name: Stop Tomcat
-    become: true
     service: name=tomcat state=stopped
   - name: Check that war file exist
     stat:
@@ -30,5 +30,4 @@
        
        dest: /usr/share/tomcat/webapps/hello-world-servlet-example.war
   - name: Start Tomcat
-    become: true
     service: name=tomcat state=started
